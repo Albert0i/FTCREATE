@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FT.CREATE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="ftcreatelib.js"></script>
+    <script>
+        /*
+            Get value from text area and convert into array of string. 
+        */
+        function getValues(textareaName) {
+            const textArea = document.getElementById(textareaName);
+            
+            return textArea.value.split(',').map(value => value.trim());
+        }
+
+        /*
+            Handle click event
+        */
+        function handleClick(event) {
+            // Get index name 
+            const indexName = document.getElementById('name').value
+            // Get index type
+            const indexType = document.querySelector('input[name="type"]:checked').value;
+            // Get index prefix(es)
+            const indexPrefix = getValues('prefix')
+            // Get domain object
+            const obj = JSON.parse(document.getElementById('obj').value);
+            // Get output object
+            const output = document.getElementById('output');
+
+            output.value = generateFTCreateCommand(indexName, indexType, indexPrefix, obj)
+        }
+    </script>
+</head>
+<body class="p-4 bg-slate-100">
+    <h3 class="text-3xl py-4 font-bold justify-center"><a title="go to documentation" href="https://redis.io/docs/latest/commands/ft.create/" target="_blank">FT.CREATE</a></h3>
+
+    <div class="p-4">
+        <div>
+            <label for="name">Index name: </label>
+            <input type="text" name="name" id="name" value="books-idx" autofocus class="w-full p-2 border border-gray-300 rounded" placeholder="Enter index name here"> 
+        </div>
+
+        <div class="pt-4">
+            <label for="type">Index type: </label>
+            <div>
+                <input type="radio" id="HASH" name="type" value="HASH" checked>
+                <label for="HASH">HASH</label><br>
+                <input type="radio" id="JSON" name="type" value="JSON">
+                <label for="JSON">JSON</label><br>
+            </div>            
+        </div>
+
+        <div class="pt-4">
+            <label for="prefix">Index prefix: (one or more separated by comma)</label><br>
+            <textarea id="prefix" name="prefix" rows="2" cols="80" class="w-full p-2 border border-gray-300 rounded" placeholder="Enter index name here">
+ru203:book:details:
+            </textarea>
+        </div>
+
+        <div class="pt-4">
+            <label for="obj">Domain object: (in JSON format)</label><br>
+            <textarea id="obj" name="obj" rows="10" cols="80" class="w-full p-2 border border-gray-300 rounded" placeholder="Enter index name here">
+{
+    "id": 123,
+    "title": "Sample Title very long title",
+    "content": "Sample Content very long content",
+    "author": "John Doe",
+    "tags": ["science", "business"],
+    "genre": "fiction", 
+    "image": "http://my/url/location/pictures/pic.jpeg",
+    "completed": false
+}
+            </textarea>
+        </div>
+        
+        <div class="pt-4">
+            <button type="button" onclick="handleClick(event)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Generate</button>
+        </div>
+
+        <div class="pt-4">
+            <label for="output">Output:</label><br>
+            <textarea id="output" name="output" rows="10" cols="80" class="w-full p-2 border border-gray-300 rounded" placeholder="Enter index name here">
+            </textarea>
+        </div>
+    </div>
+</body>
+</html>
