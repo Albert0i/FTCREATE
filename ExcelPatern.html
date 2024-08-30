@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>TA 之敗與 Excel 思考模式</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <h3>TA 之敗與 Excel 思考模式</h3>
+    <div>
+        <p><strong>緣起</strong><br />
+            TA 的原始構思是以網站形式將用戶 Excel 工作表「再電子化」(Reincarnation of Excel&copy; worksheets) 的一種新嘗試，
+            以 ASP.NET WebForm 為基礎，輔以 CSS 及 Javascript 等工具。
+        </p>
+        <p>計劃的第一部分<em>工作紀錄</em>，第二部份<em>簽約預約</em>；原定第三部分<em>工作分派</em>，由於協調問題而暫停開發。</p>
+    </div>
+
+    <div>
+        <p><strong>何謂Excel 思考模式？</strong><br />
+            從用戶角度出發，要記錄任何資料，最方便莫過於使用 Excel 工作表，設定標題 (heading)、格式 (formating) 和公式 (formula)，便可立即投入使用。
+            工作表僅足夠目前使用即可，大幹快上，無需理會其他細枝節，轉過頭來增刪欄位亦非常容易。
+        </p>
+        <p>較之於網站開發，先從編寫SQL 建立資料表開始，建立專案，資料輸入表單 (WebForm)，編寫代碼處理資料輸入/輸出，調試 (debug)，
+            UAT (User Acceptance Test)，部署 (deploy) 等是一個完整開發週期 (Development Cycle)。
+            轉過頭來增刪欄位又是另一開發週期，還未計算由於修改所帶來的人手資料更新。
+        </p>
+        <p>從手戶角度看 Excel 資料表易學、易用、可貯存成不同格式，不同版本。同樣事情發生在網站上可能是災難性的。
+        </p>
+    </div>
+
+    <div>
+        <p><strong>開發人員的困境</strong><br />
+            慣用 Excel 工作表解决問題的用戶會傾向於快速設定好工作表，盡快投入使用的工作模式，因其後續<em>修改成本</em>很低。
+            此與程式開發大不相同：
+            <ol>
+                <li>網頁介面的易用性無法與 Excel 工作表相比；</li>
+                <li>開發時間較制作 Excel 工作表數倍至數十倍以上；</li>
+                <li>工作表可簡單複制/傳送使用，網站 (程式及資料) 無法輕易 "dub" 多套出來用；</li>
+                <li>網站需要部署，源碼 (source code) 修改後需要回歸測試 (Regression Test)，無法快速應變；</li>
+                <li>Excel 工作表不存在 one-to-one，one-to-many 等資料庫概念，只能增加欄位解決；</li>
+                <li>一般用戶可參與 Exel 工作表制作，綱站開發使用專屬工具，透過增加人手提速幾乎不可能；</li>
+                <li>用戶所看到的只是網站的表層呈現 (presentation layer)，維護和管理工作用戶法法得知；</li>                
+                <li>使用網站應用程式的好處只有在長期運行，資料量變得很大時用戶才能體會。</li>
+            </ol>
+        </p>
+    </div>
+
+    <div>
+        <p><strong>後記</strong><br />
+            經常諗點解開發速度永遠追不上用戶需求？是計劃趕不上變化？抑或根本就冇計劃？<br />
+            你每日諗一樣新嘢出黎，小則做三日長則做五日，一投入真實環境又開始改。<br />
+            到底是誰害了誰？誰是得益者？誰是受害者？
+        </p>
+    </div>
+
+    <div>
+        <p>寫於 2020/09/10</p>
+    </div>    
+</body>
+</html>
