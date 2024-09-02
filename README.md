@@ -6,6 +6,8 @@ FTCREATE Helper is a small utility facilitates to create `FT.CREATE` command in 
 
 Just paste in domain object in JSON format and press `Generate`. 
 
-[alt Excel Pattern](https://albert0i.github.io/src/ExcelPattern.html)
+---
+
+[Excel Pattern](https://albert0i.github.io/ExcelPattern.html)
 
 ### EOF (2024/09/06)
