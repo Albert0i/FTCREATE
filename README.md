@@ -8,9 +8,9 @@ Just paste in domain object in JSON format and press `Generate`.
 
 ---
 
-- [Reflux](https://github.com/Albert0i/albert0i.github.io/blob/main/reflux.md)
+- [Reflux (2024/09/06)](https://github.com/Albert0i/albert0i.github.io/blob/main/reflux.md)
 
-- [Excel Pattern](https://albert0i.github.io/ExcelPattern.html)
+- [Excel Pattern (2020/09/10)](https://albert0i.github.io/ExcelPattern.html)
 
 
 ### EOF (2024/09/06)
