@@ -8,7 +8,7 @@ Just paste in domain object in JSON format and press `Generate`.
 
 ---
 
-- [Reflux](https://albert0i.github.io/reflux.md)
+- [Reflux](https://github.com/Albert0i/albert0i.github.io/blob/main/README.md)
 
 - [Excel Pattern](https://albert0i.github.io/ExcelPattern.html)
 
