@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call OracleAppSettle.ashx (SD for IE 11)</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script>
+        // Get the URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        function doWhatIMean() {
+            console.log('Hello IE 11')
+            const ctrnum = getUrlParameter('ctrnum')
+
+            // Display the parameter values
+            const outputElement = document.getElementById('ctrnum');
+            outputElement.value = ctrnum;
+
+            if (ctrnum) {
+                // Automatically submit the form, ie: 
+                // http://127.0.0.1:5500/OracleAppSettle.ie11.html?ctrnum=123456789
+                // Automatically submit the form
+                console.log('ctrnum=', ctrnum)
+                document.getElementById('myForm').submit();
+            } else {
+                console.log("ctrnum not specified.")
+            }
+        }
+    </script>
+</head>
+<body onload="doWhatIMean()">
+    <h3>更新輪候狀態，由輪候中變為已上樓</h3>
+    <h3>Call OracleAppSettle.ashx (SD for IE 11) </h3>    
+    <form id="myForm" method="post" action="http://web2012-pro-01/UB/Services/OracleAppSettle.ashx" enctype="application/x-www-form-urlencoded; charset=UTF-8>
+        <div>
+            <label for="ctrnum">合約編號</label>
+            <input type="number" id="ctrnum" name="ctrnum" maxlength="13" autofocus required>
+        </div>
+        <div>
+            <button type="submit">遞交</button>
+        </div>
+    </form>
+
+    <!--    
+        <script language="JavaScript">
+        try{
+            var content = document.getElementById("ctrnum").innerText;
+            var ctrnum = content.replace("合約編號: ","");
+            var request = new XMLHttpRequest();
+            request.open("POST", "http://web2012-pro-01/UB/Services/OracleAppSettle.ashx", true);
+            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+            request.send("ctrnum="+ctrnum);
+        }catch (ex) {
+            console.log(ex);
+        }
+        </script>    
+    -->
+</body>
+</html>
