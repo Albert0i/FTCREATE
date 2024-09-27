@@ -352,8 +352,40 @@ async function fetchOrder(customerId) {
 })();
 ```
 
+### VI. Hash Index 
 
-### VI. Bibliography 
+In MySQL 8, you can create a hash index using the MEMORY storage engine or by specifying the hash index type on a column in a table using the InnoDB engine. However, it's important to note that InnoDB primarily uses B-tree indexes, and hash indexes are less common.
+
+```
+CREATE TABLE MemOrders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE,
+    Amount DECIMAL(10, 2),
+    INDEX idx_customer_id USING HASH (CustomerID)
+) ENGINE=MEMORY;
+
+INSERT INTO MemOrders (OrderID, CustomerID, OrderDate, Amount) VALUES
+(1, 101, '2023-09-01', 150.00),
+(2, 102, '2023-09-05', 200.50),
+(3, 103, '2023-09-10', 300.75),
+(4, 101, '2023-09-15', 400.00),
+(5, 104, '2023-09-20', 250.25);
+```
+
+![alt MemOrders Figure 1](img/MemOrders_1.JPG)
+
+| Feature                  | B-tree Index                     | Hash Index                       |
+|--------------------------|----------------------------------|----------------------------------|
+| **Search Performance**   | O(log n) for range and equality  | O(1) for equality only           |
+| **Range Queries**        | Efficient                        | Not supported                    |
+| **Ordered Results**      | Supported                        | Not supported                    |
+| **Space Efficiency**     | Generally less efficient         | More efficient for exact matches |
+| **Insertion/Deletion**   | Can require rebalancing          | Typically faster but may have collisions |
+| **Use Cases**            | General-purpose, range queries   | Exact match lookups              |
+
+
+### VII. Bibliography 
 
 1. [10.3 Optimization and Indexes](https://dev.mysql.com/doc/refman/8.4/en/optimization-indexes.html)
 2. [17.6.2.1 Clustered and Secondary Indexes](https://dev.mysql.com/doc/refman/8.4/en/innodb-index-types.html)
