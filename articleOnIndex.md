@@ -353,6 +353,14 @@ async function fetchOrder(customerId) {
 ```
 
 
+### VI. Bibliography 
+
+1. [10.3 Optimization and Indexes](https://dev.mysql.com/doc/refman/8.4/en/optimization-indexes.html)
+2. [17.6.2.1 Clustered and Secondary Indexes](https://dev.mysql.com/doc/refman/8.4/en/innodb-index-types.html)
+3. [17.12.1 Online DDL Operations](https://dev.mysql.com/doc/refman/8.4/en/innodb-online-ddl-operations.html)
+4. [15.6.2.2 The Physical Structure of an InnoDB Index](https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/innodb-physical-structure.html)
+
+
 ### Epilogue 
 **Ode to RDBMS Index**
 
