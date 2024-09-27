@@ -3,7 +3,7 @@
 
 ### Prologue
 
-RDBMS can not do without index. Simply put, we create table with primary key and forget thereupon... Only when our app yields poor performance do we remember the index. This article discusses some interesting aspects on index and also makes in depth exploration on [multi-column index](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html), [partial index](https://medium.com/nazar-io/partial-index-186e42c4207f), [fulltext index](https://dev.mysql.com/doc/refman/8.4/en/fulltext-search.html) and [data partitioning](https://dev.mysql.com/doc/refman/8.4/en/partitioning.html) using [MySQL 8](https://dev.mysql.com/downloads/mysql/8.0.html). 
+RDBMS can not do without index. Simply put, we create table with primary key and forget thereupon... Only when our app yields poor performance do we remember the index. This article discusses some interesting aspects on index and also makes in depth exploration on [multi-column index](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html), [partial index](https://medium.com/nazar-io/partial-index-186e42c4207f), [fulltext index](https://dev.mysql.com/doc/refman/8.4/en/fulltext-search.html), [data partitioning](https://dev.mysql.com/doc/refman/8.4/en/partitioning.html) and hash index using [MySQL 8](https://dev.mysql.com/downloads/mysql/8.0.html). 
 
 All sample codes are credited to [ChatGPT](https://openai.com/chatgpt/), an AI language model developed by [OpenAI](https://openai.com/).
 
@@ -384,6 +384,8 @@ INSERT INTO MemOrders (OrderID, CustomerID, OrderDate, Amount) VALUES
 | **Insertion/Deletion**   | Can require rebalancing          | Typically faster but may have collisions |
 | **Use Cases**            | General-purpose, range queries   | Exact match lookups              |
 
+Hash indexes are designed to work efficiently with the MEMORY storage engine due to speed and simplicity. In contrast, InnoDB focuses on providing a robust set of features suitable for complex applications, using B-tree indexing to support a broader range of query types. 
+
 
 ### VII. Bibliography 
 
@@ -391,6 +393,7 @@ INSERT INTO MemOrders (OrderID, CustomerID, OrderDate, Amount) VALUES
 2. [17.6.2.1 Clustered and Secondary Indexes](https://dev.mysql.com/doc/refman/8.4/en/innodb-index-types.html)
 3. [17.12.1 Online DDL Operations](https://dev.mysql.com/doc/refman/8.4/en/innodb-online-ddl-operations.html)
 4. [15.6.2.2 The Physical Structure of an InnoDB Index](https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/innodb-physical-structure.html)
+5. [18.3 The MEMORY Storage Engine](https://dev.mysql.com/doc/refman/8.4/en/memory-storage-engine.html)
 
 
 ### Epilogue 
