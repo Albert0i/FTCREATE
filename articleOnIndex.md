@@ -3,7 +3,7 @@
 
 ### Prologue
 
-RDBMS can not do without index. Simply put, we create table with primary key and forget thereupon... Only when our app yields poor performance do we remember the index. This article discusses some interesting aspects on index and also makes in depth exploration on [multi-column index](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html), [partial index](https://medium.com/nazar-io/partial-index-186e42c4207f), [fulltext index](https://dev.mysql.com/doc/refman/8.4/en/fulltext-search.html), [data partitioning](https://dev.mysql.com/doc/refman/8.4/en/partitioning.html) and hash index using [MySQL 8](https://dev.mysql.com/downloads/mysql/8.0.html). 
+RDBMS can not do without index. Simply put, we create table with primary key and forget thereupon... Only when our app yields poor performance do we remember the index. This article discusses some interesting aspects on index and also makes exploration on [multi-column index](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html), [partial index](https://medium.com/nazar-io/partial-index-186e42c4207f), [fulltext index](https://dev.mysql.com/doc/refman/8.4/en/fulltext-search.html), [data partitioning](https://dev.mysql.com/doc/refman/8.4/en/partitioning.html) and hash index using [MySQL 8](https://dev.mysql.com/downloads/mysql/8.0.html). 
 
 All sample codes are credited to [ChatGPT](https://openai.com/chatgpt/), an AI language model developed by [OpenAI](https://openai.com/).
 
