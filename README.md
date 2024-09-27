@@ -8,7 +8,7 @@ Just paste in domain object in JSON format and press `Generate`.
 
 ---
 
-- [index二三事, 2024/09/27](https://github.com/Albert0i/albert0i.github.io/blob/main/articleOnIndex.md)
+- [index 二三事, 2024/09/27](https://github.com/Albert0i/albert0i.github.io/blob/main/articleOnIndex.md)
 
 - [Reflux, 2024/09/06](https://github.com/Albert0i/albert0i.github.io/blob/main/reflux.md)
 
