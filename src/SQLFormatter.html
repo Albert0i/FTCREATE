@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Formatter written by Chat-GPT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
+        <h1 class="text-2xl font-bold mb-4">SQL Formatter written by Chat-GPT</h1>
+
+        <textarea id="sqlInput" class="w-full h-48 p-2 border border-gray-300 rounded-lg mb-4" placeholder="Enter your SQL code here..."></textarea>
+
+        <div class="flex items-center mb-4">
+            <button id="formatButton" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Format SQL</button>
+
+            <button id="copyButton" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 ml-2">Copy to Clipboard</button>
+
+            <button id="resetButton" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 ml-2">Reset</button>
+
+            <button id="downloadButton" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 ml-2">Download</button>
+        </div>
+        
+        <h2 class="text-lg font-semibold mt-6">Formatted SQL:</h2>
+        <pre id="formattedOutput" class="mt-2 bg-gray-200 p-4 rounded-lg overflow-auto"></pre>
+        <div id="notification" class="mt-4 hidden bg-green-100 text-green-700 p-2 rounded-lg"></div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('sqlInput').focus();
+        };
+
+        document.getElementById('formatButton').addEventListener('click', function() {
+            const sqlInput = document.getElementById('sqlInput').value;
+            if (!sqlInput.trim()) {
+                showNotification('Please enter some SQL code to format.', 'error');
+                return;
+            }
+            const formattedOutput = formatSQL(sqlInput);
+            document.getElementById('formattedOutput').textContent = formattedOutput;
+            showNotification('SQL formatted successfully!', 'success');
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const formattedText = document.getElementById('formattedOutput').textContent;
+            navigator.clipboard.writeText(formattedText)
+                .then(() => showNotification('Copied to clipboard!', 'success'))
+                .catch(err => showNotification('Failed to copy: ' + err, 'error'));
+        });
+
+        document.getElementById('resetButton').addEventListener('click', function() {
+            document.getElementById('sqlInput').value = '';
+            document.getElementById('formattedOutput').textContent = '';
+            showNotification('Input cleared!', 'success');
+        });
+
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            const formattedText = document.getElementById('formattedOutput').textContent;
+            const blob = new Blob([formattedText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'formatted.sql';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showNotification('Download started!', 'success');
+        });
+
+        function formatSQL(sql) {
+            // Remove double quotes, ampersands, and underscores
+            sql = sql.replace(/["&]/g, ''); // Remove double quotes and ampersands
+            sql = sql.replace(/_/g, ''); // Remove underscores
+
+            // Define SQL keywords
+            const sqlKeywords = [
+                'SELECT', 'FROM', 'WHERE', 'JOIN', 'INNER JOIN',
+                'LEFT JOIN', 'RIGHT JOIN', 'GROUP BY', 'ORDER BY',
+                'INSERT INTO', 'VALUES', 'UPDATE', 'SET', 'DELETE FROM',
+                'ON', 'AND', 'OR', 'NOT', 'AS', 'IN'
+            ];
+
+            // Convert keywords to uppercase
+            sqlKeywords.forEach(keyword => {
+                const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+                sql = sql.replace(regex, keyword.toUpperCase());
+            });
+
+            // Format the SQL string
+            return sql
+                .replace(/(\bSELECT\b|\bFROM\b|\bWHERE\b|\bJOIN\b|\bINNER JOIN\b|\bLEFT JOIN\b|\bRIGHT JOIN\b|\bGROUP BY\b|\bORDER BY\b|\bINSERT INTO\b|\bVALUES\b|\bUPDATE\b|\bSET\b|\bDELETE FROM\b|\bON\b|\bAND\b|\bOR\b|\bNOT\b|\bAS\b|\bIN\b)/g, '\n$&') // Start keywords on new lines
+                .replace(/(\s*FROM\s*\()/gi, 'FROM (') // Keep opening parenthesis on the same line
+                .replace(/(\(\s*SELECT)/gi, '(SELECT') // Keep opening parenthesis and SELECT on the same line
+                .replace(/(\s*SELECT\s+)/gi, '\n    SELECT ') // Indent SELECT inside subqueries
+                .replace(/\s*\)/g, ')') // Keep closing parenthesis on the same line as the previous element
+                .replace(/;\s*/g, ';\n') // Add line after each semicolon
+                .replace(/\n\s*\n/g, '\n') // Remove extra blank lines
+                .trim(); // Clean up leading/trailing whitespace
+        }
+
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.remove('hidden');
+            notification.classList.add(type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700');
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
