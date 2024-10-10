@@ -1,4 +1,4 @@
-### [FTCREATE Helper](https://albert0i.github.io/src/SQLFormatter.html)
+### [SQL Formatter](https://albert0i.github.io/src/SQLFormatter.html)
 
 ![alt SQL Formatter](img/SQL-Formatter.JPG)
 
@@ -22,5 +22,4 @@ Just paste in domain object in JSON format and press `Generate`.
 
 - [Excel Pattern, 2020/09/10](https://albert0i.github.io/ExcelPattern.html)
 
-
-### EOF (2024/09/27)
+### EOF (2024/10/10)
