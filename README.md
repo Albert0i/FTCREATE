@@ -1,3 +1,12 @@
+
+### [FTCREATE Helper](https://albert0i.github.io/src/SQLFormatter.html)
+
+![alt SQL Formatter](img/SQL-Formatter.JPG)
+
+The SQL Formatter allows users to enter SQL code, which can be formatted for readability. 
+
+--- 
+
 ### [FTCREATE Helper](https://albert0i.github.io/src/FTCREATE.html)
 
 ![alt FTCREATE Helper](img/FTCREATE-Helper.JPG)
