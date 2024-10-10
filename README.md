@@ -3,7 +3,7 @@
 
 ![alt SQL Formatter](img/SQL-Formatter.JPG)
 
-The SQL Formatter allows users to enter SQL code, which can be formatted for readability. 
+The SQL Formatter allows users to enter SQL code, which can be formatted for readability. It features buttons to format the code, copy the formatted output, and reset the input. Notifications provide feedback on actions, while a credit and copyright notice are included at the bottom of the page.
 
 --- 
 
