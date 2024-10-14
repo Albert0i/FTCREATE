@@ -1,4 +1,8 @@
-### [Online Dictionary](https://dongdict.onrender.com/)
+### [Dong Dict](https://dongdict.onrender.com/)
+
+![alt Dong Dict](img/DongDict.JPG)
+
+The online dictionary. 
 
 ---
 ### [SQL Formatter](https://albert0i.github.io/src/SQLFormatter.html)
@@ -23,4 +27,4 @@ A small utility facilitates to create `FT.CREATE` command in Redis. Most of the 
 
 - [Excel Pattern, 2020/09/10](https://albert0i.github.io/ExcelPattern.html)
 
-### EOF (2024/10/11)
+### EOF (2024/10/14)
