@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Minimizer Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+
+    <h1 class="text-2xl font-bold mb-4">SQL Minimizer Tool</h1>
+    <p class="mb-4">Paste your well-formatted SQL statement below:</p>
+    
+    <textarea id="sqlInput" class="w-full h-32 p-2 border border-gray-300 rounded-lg mb-4" placeholder="Enter SQL statement here..." autofocus></textarea>
+    
+    <div class="mb-4">
+        <button onclick="formatSQL()" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 mr-2">Minimize SQL</button>
+        <button onclick="resetFields()" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600">Reset</button>
+        <button onclick="copyToClipboard()" class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 ml-2">Copy Output to Clipboard</button>
+    </div>
+
+    <div id="output" class="mt-4 p-4 border border-gray-300 rounded-lg bg-white text-gray-700"></div>
+
+    <script>
+        function formatSQL() {
+            var sql = document.getElementById("sqlInput").value;
+            var formattedSQL = sql.replace(/\s+/g, ' ').trim();
+            document.getElementById("output").innerText = formattedSQL;
+        }
+
+        function resetFields() {
+            document.getElementById("sqlInput").value = '';
+            document.getElementById("output").innerText = '';
+        }
+
+        function copyToClipboard() {
+            var formattedSQL = document.getElementById("output").innerText;
+
+            navigator.clipboard.writeText(formattedSQL).then(function() {
+                // alert('Output copied to clipboard!');
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Failed to copy text. Please try again.');
+            });
+        }
+    </script>
+
+</body>
+</html>
