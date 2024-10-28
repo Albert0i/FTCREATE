@@ -3,6 +3,7 @@
 
 ![alt SQL Min](img/SQLmin.JPG)
 
+The reverse of SQL Formatter.
 
 ---
 ### [Dong Dict](https://dongdict.onrender.com/)
