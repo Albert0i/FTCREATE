@@ -1,7 +1,7 @@
 
 ### [SQL Min](https://albert0i.github.io/src/SQLmin.html)
 
-![alt SQL Min](img/SQL-Min.JPG)
+![alt SQL Min](img/SQLmin.JPG)
 
 
 ---
